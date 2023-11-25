@@ -1,40 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@color/background_color">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <EditText
-        android:id="@+id/editName"
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.pz2.activity1.MainActivityViewModel" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Назва магазину"
-        android:layout_marginBottom="8dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <EditText
-        android:id="@+id/editAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Адреса магазину"
-        android:layout_below="@id/editName"
-        android:layout_marginBottom="8dp" />
+        <EditText
+            android:id="@+id/editName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Назва магазину"
+            android:text="@={viewModel.state.name}" />
 
-    <EditText
-        android:id="@+id/editCount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Кількість продуктів"
-        android:inputType="number"
-        android:layout_below="@id/editAddress"
-        android:layout_marginBottom="8dp" />
+        <EditText
+            android:id="@+id/editAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Адреса магазину"
+            android:text="@={viewModel.state.address}" />
 
-    <Button
-        android:id="@+id/btnSend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Надіслати"
-        android:layout_below="@id/editCount"
-        android:layout_centerHorizontal="true" />
+        <EditText
+            android:id="@+id/editCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Кількість продуктів"
+            android:inputType="number"
+            android:text="@={viewModel.state.productCount}" />
 
-</RelativeLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Надіслати"
+            android:onClick="@{() -> viewModel.onButtonClick()}"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+</layout>

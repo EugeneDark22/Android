@@ -1,4 +1,5 @@
-package com.example.pz2;
+package com.example.pz2.model;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.Serializable;
 
